@@ -1,6 +1,5 @@
 let listaAmigos = [];
 let escribirListaAmigos = document.getElementById("listaAmigos");
-let nombresSorteados = [];
 
 if (listaAmigos.length === 0) {
   escribirListaAmigos.innerText = "Está vacia, ¡ingresa tus amigos!";
@@ -68,18 +67,16 @@ function sortearAmigo(lista) {
       "Todos los amigos han sido sorteados, ingresa nuevos amigos para nuevos sorteos";
     lista.pop();
     deshabilitarBoton();
-      return;
-    } else {
+    return;
+  } else {
     mensajeAmigoSorteado(
       "mostrar-amigo-sorteado",
       lista[indiceRandom],
       "section-mostrar-amigo",
       "flex"
     );
-    nombresSorteados.push(lista[indiceRandom]);
     lista.splice(indiceRandom, 1);
     escribirListaAmigos.innerText = recorrerListaAmigos(listaAmigos);
-    return lista[indiceRandom];
   }
 }
 
@@ -101,10 +98,10 @@ function cerrarMensajeAmigoSorteado() {
 
 // Función para deshabilitra la lista si esta vacia
 
-function deshabilitarBoton () {
-    if(listaAmigos.length > 0){
-        document.getElementById("btn-sortear").removeAttribute("disabled");
-    } else {
-        document.getElementById("btn-sortear").setAttribute("disabled", true);
-    }
+function deshabilitarBoton() {
+  if (listaAmigos.length > 0) {
+    document.getElementById("btn-sortear").removeAttribute("disabled");
+  } else {
+    document.getElementById("btn-sortear").setAttribute("disabled", true);
+  }
 }
