@@ -8,7 +8,8 @@ if (listaAmigos.length === 0) {
 //Función para agregar amigo y realizar verificaciones de campo
 
 function agregarAmigo() {
-  let nombreAmigo = document.getElementById("amigo").value;
+  let nombreAmigo = document.getElementById("amigo").value.trim().toLowerCase();
+  let nombreAmigoMayus = nombreAmigo.charAt(0).toUpperCase() + nombreAmigo.slice(1)
 
   if (nombreAmigo == "") {
     mensajeAlerta(
@@ -16,14 +17,14 @@ function agregarAmigo() {
       "El campo esta vacio, por favor escribe un nombre",
       "#b12f2f"
     );
-  } else if (listaAmigos.includes(nombreAmigo)) {
+  } else if (listaAmigos.includes(nombreAmigoMayus)) {
     mensajeAlerta(
       "mensajes-alerta",
       "El nombre del amigo ingresado ya existe en la lista, se sugiere agregar los apellidos de la persona",
       "#b12f2f"
     );
   } else {
-    listaAmigos.push(nombreAmigo);
+    listaAmigos.push(nombreAmigoMayus);
 
     document.getElementById("amigo").value = "";
 
